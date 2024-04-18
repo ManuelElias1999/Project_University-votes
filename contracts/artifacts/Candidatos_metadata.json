@@ -6,33 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "OwnableInvalidOwner",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "OwnableUnauthorizedAccount",
-				"type": "error"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -43,25 +16,6 @@
 					}
 				],
 				"name": "CandidatoAgregado",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferred",
 				"type": "event"
 			},
 			{
@@ -125,66 +79,11 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "renounceOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
-			"errors": {
-				"OwnableInvalidOwner(address)": [
-					{
-						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
-					}
-				],
-				"OwnableUnauthorizedAccount(address)": [
-					{
-						"details": "The caller account is not authorized to perform an operation."
-					}
-				]
-			},
 			"kind": "dev",
-			"methods": {
-				"owner()": {
-					"details": "Returns the address of the current owner."
-				},
-				"renounceOwnership()": {
-					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
-				},
-				"transferOwnership(address)": {
-					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				}
-			},
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
@@ -195,7 +94,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Candidatos.sol": "Candidatos"
+			"contracts/CandidatosFactory.sol": "Candidatos"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -209,12 +108,36 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
+			"keccak256": "0x60c65f701957fdd6faea1acb0bb45825791d473693ed9ecb34726fdfaa849dd7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
-				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+				"bzz-raw://ea290300e0efc4d901244949dc4d877fd46e6c5e43dc2b26620e8efab3ab803f",
+				"dweb:/ipfs/QmcLLJppxKeJWqHxE2CUkcfhuRTgHSn8J4kijcLa5MYhSt"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0xc3e1fa9d1987f8d349dfb4d6fe93bf2ca014b52ba335cfac30bfe71e357e6f80",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c5703ccdeb7b1d685e375ed719117e9edf2ab4bc544f24f23b0d50ec82257229",
+				"dweb:/ipfs/QmTdwkbQq7owpCiyuzE7eh5LrD2ddrBCZ5WHVsWPi1RrTS"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ea104e577e63faea3b69c415637e99e755dcbf64c5833d7140c35a714d6d90c",
+				"dweb:/ipfs/Qmau6x4Ns9XdyynRCNNp3RhLqijJjFm7z5fyZazfYFGYdq"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+			"keccak256": "0xaa761817f6cd7892fcf158b3c776b34551cde36f48ff9703d53898bc45a94ea2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ad7c8d4d08938c8dfc43d75a148863fb324b80cf53e0a36f7e5a4ac29008850",
+				"dweb:/ipfs/QmcrhfPgVNf5mkdhQvy1pMv51TFokD3Y4Wa5WZhFqVh8UV"
 			]
 		},
 		"@openzeppelin/contracts/utils/Context.sol": {
@@ -225,12 +148,12 @@
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
 			]
 		},
-		"contracts/Candidatos.sol": {
-			"keccak256": "0x6027e48f06681b67c823941c54df891222d6cbfe8e353020ffc08adf5f8d09d9",
+		"contracts/CandidatosFactory.sol": {
+			"keccak256": "0x2b6955b0314f3599372c6f12d0c3e9596c1cb4aa98c3f5485b7900de3b71fade",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2fa81ee31117b4fdd126a454114702fd21b0e3ef73e47f425ff7f84e607c58e0",
-				"dweb:/ipfs/QmaqD1aKzoKby5uL6iK7Mwc3QeaTv8kGbfAdwb9g5MFsFp"
+				"bzz-raw://99e22cb221d851fcbb910d3f0d0702579b9382a6c51e4fae6972744b08c13d02",
+				"dweb:/ipfs/QmRq53xB4exgKE8no35xRaHXPBer2gSRLJGJgMW5aTAw47"
 			]
 		}
 	},

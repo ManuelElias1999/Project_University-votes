@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./Candidatos.sol";
@@ -24,6 +24,11 @@ contract Mesa_Votantes is ERC20, Candidatos {
 
     constructor() ERC20("MyToken", "MTK") {
         _mint(address(this), 1000);
+
+        // Inicializar todas las mesas como cerradas
+        for (uint256 i = 0; i < numMesas; i++) {
+            mesas[i].isOpen = false;
+        }
     }
 
     // Generación de nuevos Tokens ERC-20
@@ -83,6 +88,32 @@ contract Mesa_Votantes is ERC20, Candidatos {
         mesas[_mesaIndex].isOpen = false;
     }
 
+    // Función para abrir una mesa
+    function abrirMesa(uint256 _mesaIndex) public {
+        require(msg.sender == mesas[_mesaIndex].owner, "No eres el propietario de esta mesa");
+        require(!mesas[_mesaIndex].isOpen, "Esta mesa ya esta abierta");
+
+        mesas[_mesaIndex].isOpen = true;
+    }
+
+    // Función para cerrar todas las mesas por el owner
+    function cerrarTodasLasMesas() public onlyOwner {
+        for (uint256 i = 0; i < numMesas; i++) {
+            if (mesas[i].isOpen) {
+                mesas[i].isOpen = false;
+            }
+        }
+    }
+
+    // Función para abrir todas las mesas por el owner
+    function abrirTodasLasMesas() public onlyOwner {
+        for (uint256 i = 0; i < numMesas; i++) {
+            if (!mesas[i].isOpen) {
+                mesas[i].isOpen = true;
+            }
+        }
+    }
+
     // Función para obtener el recuento de votos de una mesa
     function obtenerRecuentoVotos(uint256 _mesaIndex) public view returns (uint256[] memory) {
         return mesas[_mesaIndex].votosCandidatos;
@@ -100,7 +131,7 @@ contract Mesa_Votantes is ERC20, Candidatos {
         for (uint256 i = 0; i < candidatos.length; i++) {
             nombres[i] = candidatos[i].name;
         }
-        for (uint256 i = 1; i <= numMesas; i++) {
+        for (uint256 i = 0; i <= numMesas; i++) {
             uint256[] memory recuentoMesa = obtenerRecuentoVotos(i);
             for (uint256 j = 0; j < recuentoMesa.length; j++) {
                 votos[j] += recuentoMesa[j];

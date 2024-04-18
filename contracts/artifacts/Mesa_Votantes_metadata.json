@@ -222,6 +222,26 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_mesaIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "abrirMesa",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "abrirTodasLasMesas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_nombre",
 						"type": "string"
@@ -350,6 +370,13 @@
 					}
 				],
 				"name": "cerrarMesa",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "cerrarTodasLasMesas",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -840,19 +867,19 @@
 			]
 		},
 		"contracts/Candidatos.sol": {
-			"keccak256": "0x6027e48f06681b67c823941c54df891222d6cbfe8e353020ffc08adf5f8d09d9",
+			"keccak256": "0x7685e114d4309ee0d27c830ca8395ddbd5063459dac53d435ac4ce88723c7102",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2fa81ee31117b4fdd126a454114702fd21b0e3ef73e47f425ff7f84e607c58e0",
-				"dweb:/ipfs/QmaqD1aKzoKby5uL6iK7Mwc3QeaTv8kGbfAdwb9g5MFsFp"
+				"bzz-raw://8b4fa45eb63b828eba50f2e2629c7f714c3b5557064347e2b7a0096135121753",
+				"dweb:/ipfs/QmXCpMj9q2joMxF1ebbkATehUqYBkCeyagHfVKWM6tEkmb"
 			]
 		},
 		"contracts/Mesa_Votantes.sol": {
-			"keccak256": "0x8dbe5498f9c7dc307cc22ebd16c15f1a3662ce09a76dcf968b53693316089258",
+			"keccak256": "0x2782a9ce2d8c7c30f72f56dc54bf92d7794f35c1629192b04e15d23699997061",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a5c5cbc9956bc85f7aa1c3ab866450c866f3e11a00abf5a87786e7dd3ad4c1c7",
-				"dweb:/ipfs/QmSoXNpPcmCVUJCctQTFgWNmaSMNEN7raSg6HhvCdFUQTk"
+				"bzz-raw://d2dfcf12b3f283873017eeb129d143912bfd4762c25fc5844a5ea948d6cec51a",
+				"dweb:/ipfs/QmaLaj3rdhBr9Gszyq3iS366P6mSJq4QdvXiqzCULKT16z"
 			]
 		}
 	},

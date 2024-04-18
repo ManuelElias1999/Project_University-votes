@@ -711,19 +711,19 @@
 			]
 		},
 		"contracts/Candidatos.sol": {
-			"keccak256": "0xb21e83ca55788e435f65bdb43d3f9787d6676bcf4fbbaaf8cd3f7b8d0b8bc288",
+			"keccak256": "0x7685e114d4309ee0d27c830ca8395ddbd5063459dac53d435ac4ce88723c7102",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f43b87348ab7fb6c5c910918fc58a9d8a541255634b7731340d38680d52c8e5c",
-				"dweb:/ipfs/QmRZynAv6cDTrobDaoHqMWfyLCj1bF6kVCD8m7SiUu19Ld"
+				"bzz-raw://8b4fa45eb63b828eba50f2e2629c7f714c3b5557064347e2b7a0096135121753",
+				"dweb:/ipfs/QmXCpMj9q2joMxF1ebbkATehUqYBkCeyagHfVKWM6tEkmb"
 			]
 		},
 		"contracts/Votantes.sol": {
-			"keccak256": "0x8bb47d985e1d033f2eb5890ad70dfc4e1d5bc06b7a9b6805134fd3eb70c842a2",
+			"keccak256": "0xa6ab6d9863c5a1d06563dfa7739b4a23163b984401158e9daf399f0646d20634",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cf22246d88d2cafe40b18b8f815989049348de8bfdc740838ebe0cf0cf338769",
-				"dweb:/ipfs/QmV8dafydGSmaCgbMoWxgncqy7UURgaEuiemu4uxiuaSC5"
+				"bzz-raw://9811e59dce5b150c1d4fd5454ab78dd6939117cfa42588761a2618b6a6afa945",
+				"dweb:/ipfs/QmaMQY5A7cEAyeQjtWjJ4RNy7FDqJ2a4dq6LStAnmWd9eD"
 			]
 		}
 	},
