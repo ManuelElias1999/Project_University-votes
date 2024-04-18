@@ -11,7 +11,7 @@ contract Candidatos is Ownable {
     }
     
     // Array para almacenar la información de los candidatos
-    Candidato[] public candidatos;
+    Candidato[] internal  candidatos;
 
     // Evento emitido al agregar un nuevo candidato
     event CandidatoAgregado(string nombre);

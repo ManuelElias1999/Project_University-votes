@@ -8,12 +8,13 @@ contract Mesa_Votantes is ERC20, Candidatos {
     // Struct para representar la información de una mesa
     struct Mesa {
         address owner; // Propietario de la mesa
+        string nombre; // Nombre de la mesa
         mapping(address => bool) hasVoted; // Mapa de votantes
         uint256[] votosCandidatos; // Contador de votos por candidato
         bool isOpen; // Estado de apertura de la mesa
     }
 
-    mapping(uint256 => Mesa) public mesas; // Mapa de mesas
+    mapping(uint256 => Mesa) private mesas; // Mapa de mesas
 
     // Array para almacenar los votantes que ya recibieron tokens
     address[] private tokenRecipients;
@@ -24,11 +25,6 @@ contract Mesa_Votantes is ERC20, Candidatos {
 
     constructor() ERC20("MyToken", "MTK") {
         _mint(address(this), 1000);
-
-        // Inicializar todas las mesas como cerradas
-        for (uint256 i = 0; i < numMesas; i++) {
-            mesas[i].isOpen = false;
-        }
     }
 
     // Generación de nuevos Tokens ERC-20
@@ -74,7 +70,8 @@ contract Mesa_Votantes is ERC20, Candidatos {
         numMesas++;
         Mesa storage nuevaMesa = mesas[numMesas-1];
         nuevaMesa.owner = _owner;
-        nuevaMesa.isOpen = true;
+        nuevaMesa.nombre = _nombre;
+        nuevaMesa.isOpen = false;
         nuevaMesa.votosCandidatos = new uint256[](candidatos.length);
         emit NuevaMesaAbierta(numMesas, _nombre);
     }
@@ -82,7 +79,7 @@ contract Mesa_Votantes is ERC20, Candidatos {
 
     // Función para cerrar una mesa
     function cerrarMesa(uint256 _mesaIndex) public {
-        require(msg.sender == mesas[_mesaIndex].owner, "No eres el propietario de esta mesa");
+        require(msg.sender == mesas[_mesaIndex].owner || msg.sender == owner(), "No tienes permiso para cerrar esta mesa");
         require(mesas[_mesaIndex].isOpen, "Esta mesa ya esta cerrada");
 
         mesas[_mesaIndex].isOpen = false;
@@ -90,7 +87,7 @@ contract Mesa_Votantes is ERC20, Candidatos {
 
     // Función para abrir una mesa
     function abrirMesa(uint256 _mesaIndex) public {
-        require(msg.sender == mesas[_mesaIndex].owner, "No eres el propietario de esta mesa");
+        require(msg.sender == owner(), "Solo el Owner puede abrir mesas");
         require(!mesas[_mesaIndex].isOpen, "Esta mesa ya esta abierta");
 
         mesas[_mesaIndex].isOpen = true;
@@ -115,8 +112,18 @@ contract Mesa_Votantes is ERC20, Candidatos {
     }
 
     // Función para obtener el recuento de votos de una mesa
-    function obtenerRecuentoVotos(uint256 _mesaIndex) public view returns (uint256[] memory) {
-        return mesas[_mesaIndex].votosCandidatos;
+    function obtenerRecuentoVotosDeMesa(uint256 _mesaIndex) public view returns (string memory nombreMesa, address ownerMesa, bool isOpen, uint256[] memory votosCandidatos, string[] memory nombresCandidatos) {
+        require(_mesaIndex < numMesas, "Mesa no encontrada");
+
+        nombreMesa = mesas[_mesaIndex].nombre;
+        ownerMesa = mesas[_mesaIndex].owner;
+        isOpen = mesas[_mesaIndex].isOpen;
+        votosCandidatos = mesas[_mesaIndex].votosCandidatos;
+
+        nombresCandidatos = new string[](candidatos.length);
+        for (uint256 i = 0; i < candidatos.length; i++) {
+            nombresCandidatos[i] = candidatos[i].name;
+        }
     }
 
     // Función para obtener todas las direcciones que han recibido tokens
@@ -131,11 +138,29 @@ contract Mesa_Votantes is ERC20, Candidatos {
         for (uint256 i = 0; i < candidatos.length; i++) {
             nombres[i] = candidatos[i].name;
         }
-        for (uint256 i = 0; i <= numMesas; i++) {
-            uint256[] memory recuentoMesa = obtenerRecuentoVotos(i);
-            for (uint256 j = 0; j < recuentoMesa.length; j++) {
-                votos[j] += recuentoMesa[j];
+
+        // Obtener el recuento de votos de cada mesa y sumarlos para obtener el recuento total
+        for (uint256 i = 0; i < numMesas; i++) {
+            (, , , uint256[] memory votosMesa, ) = obtenerRecuentoVotosDeMesa(i);
+            for (uint256 j = 0; j < votosMesa.length; j++) {
+                votos[j] += votosMesa[j];
             }
         }
     }
+
+    function obtenerVotosPorCandidato(uint256 _candidatoIndex) public view returns (string memory nombreCandidato, uint256 votos) {
+        require(_candidatoIndex < candidatos.length, "Candidato no encontrado");
+
+        // Obtener el nombre del candidato
+        nombreCandidato = candidatos[_candidatoIndex].name;
+
+        // Inicializar el recuento de votos del candidato
+        votos = 0;
+
+        // Sumar los votos del candidato en todas las mesas
+        for (uint256 i = 0; i < numMesas; i++) {
+            votos += mesas[i].votosCandidatos[_candidatoIndex];
+        }
+    }
+
 }

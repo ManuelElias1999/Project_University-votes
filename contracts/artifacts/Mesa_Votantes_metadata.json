@@ -875,11 +875,11 @@
 			]
 		},
 		"contracts/Mesa_Votantes.sol": {
-			"keccak256": "0x2782a9ce2d8c7c30f72f56dc54bf92d7794f35c1629192b04e15d23699997061",
+			"keccak256": "0x0de636c8913d5d34ea540d4d6e34a86512b3dde8363b71c9e8f79766e3a4db0a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d2dfcf12b3f283873017eeb129d143912bfd4762c25fc5844a5ea948d6cec51a",
-				"dweb:/ipfs/QmaLaj3rdhBr9Gszyq3iS366P6mSJq4QdvXiqzCULKT16z"
+				"bzz-raw://39d7a559ae3fedfc34cb50a001f57f6b1645219624631e3fcacff54006703408",
+				"dweb:/ipfs/QmVLQRew77EEj8eHnJUGMTzzWb9YqQB7XpAmJdJ9vRGjsx"
 			]
 		}
 	},
