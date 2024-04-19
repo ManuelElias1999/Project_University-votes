@@ -79,24 +79,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "getAllCandidatos",
+				"name": "obtenerNombresCandidatos",
 				"outputs": [
 					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "votos",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct Candidatos.Candidato[]",
-						"name": "",
-						"type": "tuple[]"
+						"internalType": "string[]",
+						"name": "nombres",
+						"type": "string[]"
 					}
 				],
 				"stateMutability": "view",
@@ -202,11 +190,11 @@
 			]
 		},
 		"contracts/Candidatos.sol": {
-			"keccak256": "0x4a69c33d2ccd979cba095f64eedebdfc5928ea2da0a9695870fb57300b38ee00",
+			"keccak256": "0x198bbce838afc2f74caff051d30525a29b099623f2e392f36939ab5772a477ee",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8e882ce9a963d92091f5256624b5f4d712725b9d2a2686d20bad14912c21aecc",
-				"dweb:/ipfs/QmbDkBUWops7iRoYS7fWGvpkptwJLHS2jDuQiBgyy34EAQ"
+				"bzz-raw://e0371e411c4a55699c00c96d71576f7fdb810182957624c9e7f2ac41a2d6575f",
+				"dweb:/ipfs/QmcKJDNKwkDQCAAcPc2ctpoYmkud8yMzuy8vfiSBH844RP"
 			]
 		}
 	},

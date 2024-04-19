@@ -19,17 +19,19 @@ contract Mesa_Votantes is ERC20, Candidatos {
     // Array para almacenar los votantes que ya recibieron tokens
     address[] private tokenRecipients;
 
-    uint256 public numMesas; // Contador de mesas creadas
+    uint256 private numMesas; // Contador de mesas creadas
+
+    uint256 public totalTokensCreados;
 
     event NuevaMesaAbierta(uint256 indexed mesaIndex, string nombreMesa);
 
-    constructor() ERC20("MyToken", "MTK") {
-        _mint(address(this), 1000);
+    constructor() ERC20("Universidad", "UNI") {
     }
 
     // Generación de nuevos Tokens ERC-20
     function mint(uint256 _cantidad) public onlyOwner {
         _mint(address(this), _cantidad);
+        totalTokensCreados += _cantidad;
     }
 
     // Transferencia de tokens con verificación de duplicados
@@ -161,6 +163,22 @@ contract Mesa_Votantes is ERC20, Candidatos {
         for (uint256 i = 0; i < numMesas; i++) {
             votos += mesas[i].votosCandidatos[_candidatoIndex];
         }
+    }
+
+    function obtenerInfoMesas() public view returns (uint256 cantidadMesas, string[] memory nombresMesas) {
+        cantidadMesas = numMesas;
+        nombresMesas = new string[](cantidadMesas);
+
+        for (uint256 i = 0; i < cantidadMesas; i++) {
+            nombresMesas[i] = mesas[i].nombre;
+        }
+    }
+
+    // Función para obtener el total de tokens quemados (votados)
+    function obtenerTotalTokensQuemados() public view returns (uint256 Total) {
+        uint256 totalQuemados = 0;
+       totalQuemados = totalTokensCreados - totalSupply();
+        return totalQuemados;
     }
 
 }

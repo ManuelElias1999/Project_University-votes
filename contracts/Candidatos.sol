@@ -27,8 +27,12 @@ contract Candidatos is Ownable {
         emit CandidatoAgregado(_nombre);
     }
 
-    // Función para obtener la información de todos los candidatos
-    function getAllCandidatos() public view returns (Candidato[] memory) {
-        return candidatos;
+    // Función para obtener los nombres de todos los candidatos
+    function obtenerNombresCandidatos() public view returns (string[] memory nombres) {
+        nombres = new string[](candidatos.length);
+        for (uint256 i = 0; i < candidatos.length; i++) {
+            nombres[i] = candidatos[i].name;
+        }
     }
+
 }

@@ -341,30 +341,6 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "candidatos",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "votos",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
 						"name": "_mesaIndex",
 						"type": "uint256"
 					}
@@ -414,61 +390,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "getAllCandidatos",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "votos",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct Candidatos.Candidato[]",
-						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "getTokenRecipients",
 				"outputs": [
 					{
 						"internalType": "address[]",
 						"name": "",
 						"type": "address[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "mesas",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "isOpen",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -502,12 +429,30 @@
 			},
 			{
 				"inputs": [],
-				"name": "numMesas",
+				"name": "obtenerInfoMesas",
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "cantidadMesas",
 						"type": "uint256"
+					},
+					{
+						"internalType": "string[]",
+						"name": "nombresMesas",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "obtenerNombresCandidatos",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "nombres",
+						"type": "string[]"
 					}
 				],
 				"stateMutability": "view",
@@ -521,12 +466,69 @@
 						"type": "uint256"
 					}
 				],
-				"name": "obtenerRecuentoVotos",
+				"name": "obtenerRecuentoVotosDeMesa",
 				"outputs": [
 					{
+						"internalType": "string",
+						"name": "nombreMesa",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "ownerMesa",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isOpen",
+						"type": "bool"
+					},
+					{
 						"internalType": "uint256[]",
-						"name": "",
+						"name": "votosCandidatos",
 						"type": "uint256[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "nombresCandidatos",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "obtenerTotalTokensQuemados",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "Total",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_candidatoIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "obtenerVotosPorCandidato",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombreCandidato",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votos",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -568,6 +570,19 @@
 			{
 				"inputs": [],
 				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalTokensCreados",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -867,19 +882,19 @@
 			]
 		},
 		"contracts/Candidatos.sol": {
-			"keccak256": "0x7685e114d4309ee0d27c830ca8395ddbd5063459dac53d435ac4ce88723c7102",
+			"keccak256": "0x198bbce838afc2f74caff051d30525a29b099623f2e392f36939ab5772a477ee",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8b4fa45eb63b828eba50f2e2629c7f714c3b5557064347e2b7a0096135121753",
-				"dweb:/ipfs/QmXCpMj9q2joMxF1ebbkATehUqYBkCeyagHfVKWM6tEkmb"
+				"bzz-raw://e0371e411c4a55699c00c96d71576f7fdb810182957624c9e7f2ac41a2d6575f",
+				"dweb:/ipfs/QmcKJDNKwkDQCAAcPc2ctpoYmkud8yMzuy8vfiSBH844RP"
 			]
 		},
 		"contracts/Mesa_Votantes.sol": {
-			"keccak256": "0x0de636c8913d5d34ea540d4d6e34a86512b3dde8363b71c9e8f79766e3a4db0a",
+			"keccak256": "0x6b4167ca7891c6cae5922b9fc7d40c02521b585d92d4b77cc95d288c09dc9d37",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://39d7a559ae3fedfc34cb50a001f57f6b1645219624631e3fcacff54006703408",
-				"dweb:/ipfs/QmVLQRew77EEj8eHnJUGMTzzWb9YqQB7XpAmJdJ9vRGjsx"
+				"bzz-raw://3761d960f05860e093de6bba23b35944e19ebeddf2cd48faa72b9a367f35af7f",
+				"dweb:/ipfs/QmZtuPLxtkPH7fy6P6nGm2CaCUaK78swTJbhaRrRLf4DV2"
 			]
 		}
 	},
